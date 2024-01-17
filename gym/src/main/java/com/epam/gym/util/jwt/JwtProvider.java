@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +25,7 @@ public class JwtProvider {
 
     @Value("${jwt.expiration}")
     private long accessTokenExpirationMs;
+    private final HttpServletRequest request;
     private Set<String> blacklist = new HashSet<>();
 
     public String generateAccessToken(Long userId, String username) {
@@ -75,7 +77,9 @@ public class JwtProvider {
         return body.get("userId", Long.class);
     }
 
-
+    public  String getToken() {
+        return request.getHeader(HttpHeaders.AUTHORIZATION);
+    }
     public void invalidateToken(String token) {
         blacklist.add(token);
     }

@@ -1,6 +1,6 @@
 package com.epam.reportservice.model.dto;
 
-import com.epam.reportservice.util.ActionType;
+import com.epam.reportservice.util.constants.ActionType;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,14 +1,19 @@
 package com.epam.gym.service.impl;
 
+import com.epam.gym.exception.ResourceNotFoundException;
+import com.epam.gym.feign.ReportClient;
+import com.epam.gym.mapper.TrainingMapper;
 import com.epam.gym.model.Trainee;
 import com.epam.gym.model.Trainer;
+import com.epam.gym.model.Training;
+import com.epam.gym.model.dto.request.TrainerSummaryDto;
 import com.epam.gym.model.dto.request.TrainingRequestDTO;
-import com.epam.gym.exception.ResourceNotFoundException;
-import com.epam.gym.mapper.TrainingMapper;
 import com.epam.gym.repository.TraineeRepository;
 import com.epam.gym.repository.TrainerRepository;
 import com.epam.gym.repository.TrainingRepository;
 import com.epam.gym.service.TrainingService;
+import com.epam.gym.util.ActionType;
+import com.epam.gym.util.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,7 +28,10 @@ public class TrainingServiceImpl implements TrainingService {
     private final TrainingMapper trainingMapper;
     private final TraineeRepository traineeRepository;
     private final TrainerRepository trainerRepository;
+    private final ReportClient reportClient;
+    private final JwtProvider jwtProvider;
 
+    @Override
     @Transactional
     public void create(TrainingRequestDTO trainingRequestDTO) {
         var training = trainingMapper.toTraining(trainingRequestDTO);
@@ -34,5 +42,27 @@ public class TrainingServiceImpl implements TrainingService {
         training.setTrainee(trainee);
         training.setTrainer(trainer);
         trainingRepository.save(training);
+        reportClient.summary(
+                jwtProvider.getToken(),
+                toTrainerSummaryDto(training, ActionType.ADD));
+    }
+
+    @Override
+    public void delete(Training training) {
+        reportClient.summary(
+                jwtProvider.getToken(),
+                toTrainerSummaryDto(training, ActionType.DELETE));
+    }
+
+    private TrainerSummaryDto toTrainerSummaryDto(Training training, ActionType actionType) {
+        return TrainerSummaryDto.builder()
+                .username(training.getTrainer().getUser().getUsername())
+                .firstName(training.getTrainer().getUser().getFirstName())
+                .lastName(training.getTrainer().getUser().getLastName())
+                .isActive(training.getTrainer().getUser().getIsActive())
+                .duration(training.getDuration())
+                .actionType(actionType)
+                .date(training.getDate())
+                .build();
     }
 }

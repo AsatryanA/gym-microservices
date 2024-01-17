@@ -32,30 +32,15 @@ public class ControllerLoggingAspect {
 
     @Around("controllerMethods() && controllerBean()")
     public Object logControllerMethod(ProceedingJoinPoint joinPoint) throws Throwable {
-        var transactionId = generateTransactionId();
-        TransactionIdHolder.setTransactionId(transactionId);
-        logTransactionStart(transactionId);
         logRequestDetails();
         try {
             var result = joinPoint.proceed();
             logResponseDetails(result);
-            logTransactionEnd(transactionId);
             return result;
         } catch (Exception e) {
-            logTransactionError(transactionId, e);
+            logTransactionError(e);
             throw e;
-        } finally {
-            TransactionIdHolder.clearTransactionId();
         }
-    }
-
-
-    private String generateTransactionId() {
-        return UUID.randomUUID().toString();
-    }
-
-    private void logTransactionStart(String transactionId) {
-        log.info("Transaction {} started", transactionId);
     }
 
     private void logRequestDetails() {
@@ -66,11 +51,8 @@ public class ControllerLoggingAspect {
         log.info("Response Status: {}, Response Body: {}", response.getStatus(), result.toString());
     }
 
-    private void logTransactionEnd(String transactionId) {
-        log.info("Transaction {} completed successfully", transactionId);
-    }
 
-    private void logTransactionError(String transactionId, Exception e) {
-        log.error("Transaction {} failed with error: {}", transactionId, e.getMessage());
+    private void logTransactionError(Exception e) {
+        log.error("Failed with error: {}", e.getMessage());
     }
 }

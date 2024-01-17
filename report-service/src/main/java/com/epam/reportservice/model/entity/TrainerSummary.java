@@ -1,11 +1,12 @@
 package com.epam.reportservice.model.entity;
 
-import com.epam.reportservice.util.TrainerStatus;
+import com.epam.reportservice.util.constants.TrainerStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import java.util.Map;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class TrainerSummary {
     private String username;
     private String firstName;

@@ -20,7 +20,7 @@ public class LoggingAspect {
     public void springBeanPointcut() {
     }
 
-    @Pointcut("within(com.epam.gym.dao..*)" +
+    @Pointcut("within(com.epam.gym.repository..*)" +
             " || within(com.epam.gym.service..*)")
     public void applicationPackagePointcut() {
     }

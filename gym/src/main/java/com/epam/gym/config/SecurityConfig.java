@@ -36,14 +36,15 @@ public class SecurityConfig {
                 "/api/v1/trainees",
                 "/api/v1/trainers",
                 "/api/v1/auth/login"};
-        final String[] whiteListSwagger = {
+        final String[] whiteList = {
                 "/v2/api-docs",
                 "/configuration/ui",
                 "/swagger-resources/**",
                 "/configuration/security",
                 "/swagger-ui.html",
                 "/webjars/**",
-                "/swagger-ui/**"};
+                "/swagger-ui/**",
+                "/actuator/**"};
 
         http
                 .httpBasic()
@@ -54,7 +55,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests(auth -> auth
                         .antMatchers(HttpMethod.POST, whiteListOnlyPostMethod).permitAll()
-                        .antMatchers(whiteListSwagger).permitAll()
+                        .antMatchers(whiteList).permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(globalExceptionFilter, LogoutFilter.class)

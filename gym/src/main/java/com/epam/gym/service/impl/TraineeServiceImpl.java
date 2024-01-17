@@ -1,6 +1,7 @@
 package com.epam.gym.service.impl;
 
 import com.epam.gym.model.Trainee;
+import com.epam.gym.model.Training;
 import com.epam.gym.model.User;
 import com.epam.gym.model.dto.request.ToggleActiveDTO;
 import com.epam.gym.model.dto.request.TraineeRequestDTO;
@@ -15,8 +16,10 @@ import com.epam.gym.mapper.TraineeMapper;
 import com.epam.gym.mapper.TrainingMapper;
 import com.epam.gym.mapper.UserMapper;
 import com.epam.gym.repository.TraineeRepository;
+import com.epam.gym.repository.TrainingRepository;
 import com.epam.gym.service.TraineeService;
 import com.epam.gym.service.TrainerService;
+import com.epam.gym.service.TrainingService;
 import com.epam.gym.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,10 +32,12 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class TraineeServiceImpl implements TraineeService {
+    private final TrainingRepository trainingRepository;
 
     private final UserService userService;
     private final TrainerService trainerService;
     private final TraineeRepository traineeRepository;
+    private final TrainingService trainingService;
     private final TraineeMapper traineeMapper;
     private final TrainingMapper trainingMapper;
     private final UserMapper userMapper;
@@ -66,6 +71,8 @@ public class TraineeServiceImpl implements TraineeService {
     @Transactional
     public void delete(Long id) {
         var trainee = traineeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(Trainee.class, id));
+        var trainings = trainee.getTrainings();
+        trainings.forEach(trainingService::delete);
         trainee.getTrainers().forEach(trainer -> trainer.getTrainees().remove(trainee));
         trainee.getTrainers().clear();
         traineeRepository.delete(trainee);
