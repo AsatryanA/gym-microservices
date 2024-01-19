@@ -55,7 +55,8 @@ resilience4j:
         wait-duration-in-open-state: 5s
         permitted-number-of-calls-in-half-open-state: 3
 
-
+active-mq:
+  broker-url: http://localhost:8161
 
 logging:
   pattern:

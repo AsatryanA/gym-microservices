@@ -98,16 +98,12 @@ q
 Agym/src/main/java/com/epam/gym/repository/TrainingRepository.java,3\c\3cf41936db9355cf86a67d427b23a73293be30b8
 h
 8gym/src/main/java/com/epam/gym/util/jwt/JwtProvider.java,7\4\749f03868cf08ef0ac5ab7995a5a63afd11506e4
-n
->gym/src/main/java/com/epam/gym/aspect/TransactionIdHolder.java,9\2\926a71c440de0cecdc482d1216181180f775c397
 r
 Bgym/src/main/java/com/epam/gym/aspect/ControllerLoggingAspect.java,5\b\5b3645fd9246ec7796d12ac14f22c924aa924185
 h
 8gym/src/main/java/com/epam/gym/aspect/LoggingAspect.java,2\b\2be4d56549dd6f7c5ef65b9d97d00548cb40efe0
 c
 3gym/src/main/java/com/epam/gym/config/InitData.java,2\4\246f25c4deebcd6b6726339d68ac6e8de0a5f58a
-m
-=gym/src/main/java/com/epam/gym/feign/TestFeignForCircuit.java,b\5\b5b18141526b9d980d7c0ea843c3a6f8812e7426
 o
 ?gym/src/main/java/com/epam/gym/service/TrainingTypeService.java,3\e\3e14fd89d322a45b329b706621ca88ee2a3eb977
 s
@@ -128,3 +124,5 @@ y
 Ireport-service/src/main/java/com/epam/reportservice/config/WebConfig.java,c\2\c2091506ef2a4c5152af794a8d29bcfb627e2458
 t
 Dgym/src/main/java/com/epam/gym/config/ReportClientConfiguration.java,9\5\9545e95dfe4bd6ba3a2cf37d9c8ceb9b4ecf89ed
+i
+9gym/src/main/java/com/epam/gym/config/ActiveMQConfig.java,a\f\afbb4293ae516aa3bb166fc4d356d5132254a7b8
