@@ -34,7 +34,7 @@ public class ControllerLoggingAspect {
         logRequestDetails();
         try {
             var result = joinPoint.proceed();
-            logResponseDetails(result);
+            //logResponseDetails(result);
             return result;
         } catch (Exception e) {
             logTransactionError(e);

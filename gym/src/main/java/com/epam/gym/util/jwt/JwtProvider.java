@@ -77,9 +77,10 @@ public class JwtProvider {
         return body.get("userId", Long.class);
     }
 
-    public  String getToken() {
+    public String getToken() {
         return request.getHeader(HttpHeaders.AUTHORIZATION);
     }
+
     public void invalidateToken(String token) {
         blacklist.add(token);
     }

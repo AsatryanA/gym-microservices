@@ -1,0 +1,6 @@
+
+{
+java:S1488$"^Immediately return this expression instead of assigning it to the temporary variable "result".(š•Ô‘8òÂ‡“Ò1
+X	java:S125%"<This block of commented-out lines of code should be removed.(ÀÓš£8øÂ‡“Ò1
+Y
+java:S11441"7Remove this unused private "logResponseDetails" method.(¦äø¹þÿÿÿÿ8úÂ‡“Ò1

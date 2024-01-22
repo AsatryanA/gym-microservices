@@ -1,3 +1,5 @@
 
-f
-java:S1128"DRemove this unused import 'com.epam.gym.aspect.TransactionIdHolder'.(ÓŸìÊıÿÿÿÿ8’ÄñĞ1
+J
+java:S1172C"(Remove this unused method parameter "e".(ğ®šÿÿÿÿÿ8¬üÅ‹Ó1
+S
+java:S1144C"1Remove this unused private "failCreation" method.(ğ®šÿÿÿÿÿ8®üÅ‹Ó1
