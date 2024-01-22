@@ -1,7 +1,11 @@
 package com.epam.gym.service.impl;
 
+import com.epam.gym.exception.ResourceNotFoundException;
+import com.epam.gym.exception.VerificationException;
+import com.epam.gym.mapper.TraineeMapper;
+import com.epam.gym.mapper.TrainingMapper;
+import com.epam.gym.mapper.UserMapper;
 import com.epam.gym.model.Trainee;
-import com.epam.gym.model.Training;
 import com.epam.gym.model.User;
 import com.epam.gym.model.dto.request.ToggleActiveDTO;
 import com.epam.gym.model.dto.request.TraineeRequestDTO;
@@ -10,11 +14,6 @@ import com.epam.gym.model.dto.response.TraineeCreateResponseDTO;
 import com.epam.gym.model.dto.response.TraineeResponseDTO;
 import com.epam.gym.model.dto.response.TraineeTrainersResponseDTO;
 import com.epam.gym.model.dto.response.TraineeTrainingDTO;
-import com.epam.gym.exception.ResourceNotFoundException;
-import com.epam.gym.exception.VerificationException;
-import com.epam.gym.mapper.TraineeMapper;
-import com.epam.gym.mapper.TrainingMapper;
-import com.epam.gym.mapper.UserMapper;
 import com.epam.gym.repository.TraineeRepository;
 import com.epam.gym.repository.TrainingRepository;
 import com.epam.gym.service.TraineeService;

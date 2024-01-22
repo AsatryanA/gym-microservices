@@ -52,8 +52,6 @@ Mreport-service/src/main/java/com/epam/reportservice/util/jwt/JwtProvider.java,
 Kreport-service/src/main/java/com/epam/reportservice/util/jwt/JwtFilter.java,0\a\0ad4df51e9ff70c40f180f0b5645796aa4d7880d
 …
 Ureport-service/src/main/java/com/epam/reportservice/util/constants/TrainerStatus.java,7\7\775d3af9a5be3195c189a9d5e86f05de2cdb844f
-f
-6gym/src/main/java/com/epam/gym/feign/ReportClient.java,e\4\e46f5bb200daa67c9ffa334cd5cf6c2820899574
 c
 3gym/src/main/java/com/epam/gym/util/ActionType.java,b\a\bacb41183c4be530f7a041f204d3101dda5593f9
 w
@@ -98,16 +96,12 @@ q
 Agym/src/main/java/com/epam/gym/repository/TrainingRepository.java,3\c\3cf41936db9355cf86a67d427b23a73293be30b8
 h
 8gym/src/main/java/com/epam/gym/util/jwt/JwtProvider.java,7\4\749f03868cf08ef0ac5ab7995a5a63afd11506e4
-n
->gym/src/main/java/com/epam/gym/aspect/TransactionIdHolder.java,9\2\926a71c440de0cecdc482d1216181180f775c397
 r
 Bgym/src/main/java/com/epam/gym/aspect/ControllerLoggingAspect.java,5\b\5b3645fd9246ec7796d12ac14f22c924aa924185
 h
 8gym/src/main/java/com/epam/gym/aspect/LoggingAspect.java,2\b\2be4d56549dd6f7c5ef65b9d97d00548cb40efe0
 c
 3gym/src/main/java/com/epam/gym/config/InitData.java,2\4\246f25c4deebcd6b6726339d68ac6e8de0a5f58a
-m
-=gym/src/main/java/com/epam/gym/feign/TestFeignForCircuit.java,b\5\b5b18141526b9d980d7c0ea843c3a6f8812e7426
 o
 ?gym/src/main/java/com/epam/gym/service/TrainingTypeService.java,3\e\3e14fd89d322a45b329b706621ca88ee2a3eb977
 s
@@ -128,3 +122,7 @@ y
 Ireport-service/src/main/java/com/epam/reportservice/config/WebConfig.java,c\2\c2091506ef2a4c5152af794a8d29bcfb627e2458
 t
 Dgym/src/main/java/com/epam/gym/config/ReportClientConfiguration.java,9\5\9545e95dfe4bd6ba3a2cf37d9c8ceb9b4ecf89ed
+g
+7gym/src/main/java/com/epam/gym/feign/ReportService.java,a\2\a29a40cd45b50c5f54dd3ca9baca81c5696d621d
+d
+4gym/src/main/java/com/epam/gym/filter/MdcFilter.java,6\9\6987f2148d2adb60b9b186cde98a11514e11210b

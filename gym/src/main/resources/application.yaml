@@ -14,12 +14,14 @@ server:
 eureka:
   instance:
     hostname: localhost
+    prefer-ip-address: true
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
 
 management:
-
   endpoints:
     web:
       exposure:
@@ -46,10 +48,10 @@ jwt:
 resilience4j:
   circuitbreaker:
     instances:
-      getAll:
+      create-summary:
         register-health-indicator: true
         event-consumer-buffer-size: 10
-        failure-rate-threshold: 50
+        failure-rate-threshold: 3
         minimum-number-of-calls: 5
         automatic-transition-from-open-to-half-open-enabled: true
         wait-duration-in-open-state: 5s

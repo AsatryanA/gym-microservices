@@ -1,7 +1,7 @@
 package com.epam.gym.service.impl;
 
 import com.epam.gym.exception.ResourceNotFoundException;
-import com.epam.gym.feign.ReportClient;
+import com.epam.gym.feign.ReportService;
 import com.epam.gym.mapper.TrainingMapper;
 import com.epam.gym.model.Trainee;
 import com.epam.gym.model.Trainer;
@@ -13,11 +13,12 @@ import com.epam.gym.repository.TrainerRepository;
 import com.epam.gym.repository.TrainingRepository;
 import com.epam.gym.service.TrainingService;
 import com.epam.gym.util.ActionType;
-import com.epam.gym.util.jwt.JwtProvider;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ServerErrorException;
 
 @Slf4j
 @Service
@@ -28,11 +29,11 @@ public class TrainingServiceImpl implements TrainingService {
     private final TrainingMapper trainingMapper;
     private final TraineeRepository traineeRepository;
     private final TrainerRepository trainerRepository;
-    private final ReportClient reportClient;
-    private final JwtProvider jwtProvider;
+    private final ReportService reportService;
 
     @Override
     @Transactional
+    @CircuitBreaker(name = "create-summary", fallbackMethod = "failCreation")
     public void create(TrainingRequestDTO trainingRequestDTO) {
         var training = trainingMapper.toTraining(trainingRequestDTO);
         var trainee = traineeRepository.findById(trainingRequestDTO.getTraineeId())
@@ -42,15 +43,13 @@ public class TrainingServiceImpl implements TrainingService {
         training.setTrainee(trainee);
         training.setTrainer(trainer);
         trainingRepository.save(training);
-        reportClient.summary(
-                jwtProvider.getToken(),
+        reportService.summary(
                 toTrainerSummaryDto(training, ActionType.ADD));
     }
 
     @Override
     public void delete(Training training) {
-        reportClient.summary(
-                jwtProvider.getToken(),
+        reportService.summary(
                 toTrainerSummaryDto(training, ActionType.DELETE));
     }
 
@@ -64,5 +63,8 @@ public class TrainingServiceImpl implements TrainingService {
                 .actionType(actionType)
                 .date(training.getDate())
                 .build();
+    }
+    private void failCreation(Throwable e){
+        throw new ServerErrorException("Oops! Our service is experiencing technical issues");
     }
 }

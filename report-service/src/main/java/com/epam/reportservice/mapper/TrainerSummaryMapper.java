@@ -26,4 +26,5 @@ public class TrainerSummaryMapper {
                 .status(trainerSummaryDto.getIsActive() ? TrainerStatus.ACTIVE : TrainerStatus.INACTIVE)
                 .build();
     }
+
 }
