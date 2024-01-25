@@ -3,15 +3,15 @@ package com.epam.gym;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.jms.annotation.EnableJms;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients
-public class GymApplication {
+@EnableJms
+public class ReportServiceApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(GymApplication.class, args);
+        SpringApplication.run(ReportServiceApplication.class, args);
     }
 
 }

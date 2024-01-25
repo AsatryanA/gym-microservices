@@ -1,8 +1,8 @@
 package com.epam.gym.service.impl;
 
 import com.epam.gym.exception.ResourceNotFoundException;
-import com.epam.gym.feign.ReportService;
 import com.epam.gym.mapper.TrainingMapper;
+import com.epam.gym.messaging.producer.MessageProducer;
 import com.epam.gym.model.Trainee;
 import com.epam.gym.model.Trainer;
 import com.epam.gym.model.Training;
@@ -29,7 +29,7 @@ public class TrainingServiceImpl implements TrainingService {
     private final TrainingMapper trainingMapper;
     private final TraineeRepository traineeRepository;
     private final TrainerRepository trainerRepository;
-    private final ReportService reportService;
+    private final MessageProducer messageProducer;
 
     @Override
     @Transactional
@@ -43,13 +43,13 @@ public class TrainingServiceImpl implements TrainingService {
         training.setTrainee(trainee);
         training.setTrainer(trainer);
         trainingRepository.save(training);
-        reportService.summary(
+        messageProducer.sendMessage(
                 toTrainerSummaryDto(training, ActionType.ADD));
     }
 
     @Override
     public void delete(Training training) {
-        reportService.summary(
+        messageProducer.sendMessage(
                 toTrainerSummaryDto(training, ActionType.DELETE));
     }
 
@@ -64,7 +64,8 @@ public class TrainingServiceImpl implements TrainingService {
                 .date(training.getDate())
                 .build();
     }
-    private void failCreation(Throwable e){
+
+    private void failCreation(Throwable e) {
         throw new ServerErrorException("Oops! Our service is experiencing technical issues");
     }
 }

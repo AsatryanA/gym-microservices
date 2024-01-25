@@ -1,7 +1,9 @@
 spring:
   application:
     name: report-service
-
+  activemq:
+    packages:
+      trust-all: true
 server:
   port: 0
 

@@ -1,7 +1,6 @@
 package com.epam.gym.model.dto.request;
 
-import com.epam.gym.util.ActionType;
-import lombok.Builder;
+import com.epam.gym.util.constants.ActionType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +9,6 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@Builder
 public class TrainerSummaryDto implements Serializable {
     private String username;
     private String firstName;

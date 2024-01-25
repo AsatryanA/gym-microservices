@@ -5,7 +5,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
@@ -14,7 +13,6 @@ import org.springframework.jms.support.converter.MessageType;
 import javax.jms.ConnectionFactory;
 
 @Configuration
-@EnableJms
 public class ActiveMQConfig {
 
     @Bean
@@ -23,23 +21,15 @@ public class ActiveMQConfig {
         activeMQConnectionFactory.setUseAsyncSend(true);
         return activeMQConnectionFactory;
     }
-    @Bean
-    public MessageConverter converter() {
-        MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
-        converter.setObjectMapper(objectMapper());
-        converter.setTargetType(MessageType.TEXT);
-        converter.setTypeIdPropertyName("path");
-        return converter;
-    }
 
-    @Bean
-    public JmsTemplate jmsTemplate() {
-        JmsTemplate jmsTemplate = new JmsTemplate();
-        jmsTemplate.setConnectionFactory(connectionFactory());
-        jmsTemplate.setMessageConverter(converter());
-        return jmsTemplate;
-    }
-
+@Bean
+public MessageConverter converter() {
+    MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
+    converter.setObjectMapper(objectMapper());
+    converter.setTargetType(MessageType.TEXT);
+    converter.setTypeIdPropertyName("path");
+    return converter;
+}
     @Bean
     public ObjectMapper objectMapper() {
         var objectMapper = new ObjectMapper();
