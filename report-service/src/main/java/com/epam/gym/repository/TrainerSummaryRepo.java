@@ -1,12 +1,14 @@
 package com.epam.gym.repository;
 
 import com.epam.gym.model.entity.TrainerSummary;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import java.util.List;
 
 
-public interface TrainerSummaryRepo {
+public interface TrainerSummaryRepo extends MongoRepository<TrainerSummary, String> {
 
-    TrainerSummary getByUsername(String username);
+    TrainerSummary findByUsername(String username);
 
-    void save(TrainerSummary trainerSummary);
-
+    List<TrainerSummary> findByFirstNameAndLastName(String firstname, String lastname);
 }

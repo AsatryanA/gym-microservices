@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +22,7 @@ public class TrainerSummaryServiceImpl implements TrainerSummaryService {
     @Override
     public void updateSummary(TrainerSummaryDto trainerSummaryDto) {
         var actionType = trainerSummaryDto.getActionType();
-        var existingTrainer = trainerSummaryRepo.getByUsername(trainerSummaryDto.getUsername());
+        var existingTrainer = trainerSummaryRepo.findByUsername(trainerSummaryDto.getUsername());
         if (existingTrainer == null) {
             if (actionType.equals(ActionType.DELETE)) {
                 return;
@@ -37,8 +38,8 @@ public class TrainerSummaryServiceImpl implements TrainerSummaryService {
     }
 
     @Override
-    public TrainerSummary getByUsername(String username) {
-        return trainerSummaryRepo.getByUsername(username);
+    public List<TrainerSummary> getByFirstnameAndLastname(String firstname, String lastname) {
+        return trainerSummaryRepo.findByFirstNameAndLastName(firstname,lastname);
     }
 
     private TrainerSummary update(TrainerSummary existingTrainer, TrainerSummaryDto trainerSummaryDto) {

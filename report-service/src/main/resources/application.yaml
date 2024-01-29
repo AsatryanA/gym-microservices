@@ -4,9 +4,14 @@ spring:
   activemq:
     packages:
       trust-all: true
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: gym
+      auto-index-creation: true
 server:
   port: 0
-
 eureka:
   instance:
     hostname: localhost

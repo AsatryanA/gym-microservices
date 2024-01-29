@@ -44,3 +44,15 @@ Dreport-service/src/main/java/com/epam/gym/aspect/MdcInterceptor.java,1\d\1d8c7
 Lreport-service/src/main/java/com/epam/gym/service/TrainerSummaryService.java,2\c\2c8d08bb15e4e65fed85de371eabdc098d903ffe
 z
 Jreport-service/src/main/java/com/epam/gym/model/dto/TrainerSummaryDto.java,7\2\72465dac2b1f6f85284408bf282988ee46383306
+z
+Jreport-service/src/main/java/com/epam/gym/model/entity/TrainerSummary.java,b\5\b54b1493fd9e4c7c56a558554751bf5b418d5ce0
+|
+Lreport-service/src/main/java/com/epam/gym/repository/TrainerSummaryRepo.java,0\c\0c53f40a3e822696c209171bd84442cff9f39756
+…
+Ureport-service/src/main/java/com/epam/gym/repository/impl/TrainerSummaryRepoImpl.java,9\0\90f085a1e130199b11c96d69ec0817f1424c9815
+…
+Ureport-service/src/main/java/com/epam/gym/service/impl/TrainerSummaryServiceImpl.java,9\f\9fa57d081db6c733e7c3870dbf81d57e997593ab
+‚
+Rreport-service/src/main/java/com/epam/gym/controller/TrainerSummaryController.java,b\e\bef682b87e1ec45c84302405315ea2dd2b0a4838
+z
+Jreport-service/src/main/java/com/epam/gym/mapper/TrainerSummaryMapper.java,6\7\675f1f3ad484c13c53091a87e8c69b3b1b21a2ff
