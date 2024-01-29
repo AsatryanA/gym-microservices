@@ -40,3 +40,7 @@ r
 Bgym/src/main/java/com/epam/gym/aspect/ControllerLoggingAspect.java,5\b\5b3645fd9246ec7796d12ac14f22c924aa924185
 t
 Dreport-service/src/main/java/com/epam/gym/aspect/MdcInterceptor.java,1\d\1d8c7e6382996f9e0606453ebd10ffede2c5d6d5
+|
+Lreport-service/src/main/java/com/epam/gym/service/TrainerSummaryService.java,2\c\2c8d08bb15e4e65fed85de371eabdc098d903ffe
+z
+Jreport-service/src/main/java/com/epam/gym/model/dto/TrainerSummaryDto.java,7\2\72465dac2b1f6f85284408bf282988ee46383306

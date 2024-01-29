@@ -1,6 +1,6 @@
 package com.epam.gym.controller;
 
-import com.epam.gym.model.dto.request.TrainerSummaryDto;
+import com.epam.gym.model.dto.TrainerSummaryDto;
 import com.epam.gym.model.entity.TrainerSummary;
 import com.epam.gym.service.TrainerSummaryService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class TrainerSummaryController {
 
     @PostMapping
     public void summary(@RequestBody TrainerSummaryDto trainerSummaryDto) {
-        trainerSummaryService.summary(trainerSummaryDto);
+        trainerSummaryService.updateSummary(trainerSummaryDto);
     }
 
     @GetMapping

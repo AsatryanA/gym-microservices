@@ -1,7 +1,7 @@
 package com.epam.gym.service.impl;
 
 import com.epam.gym.mapper.TrainerSummaryMapper;
-import com.epam.gym.model.dto.request.TrainerSummaryDto;
+import com.epam.gym.model.dto.TrainerSummaryDto;
 import com.epam.gym.model.entity.TrainerSummary;
 import com.epam.gym.repository.TrainerSummaryRepo;
 import com.epam.gym.service.TrainerSummaryService;
@@ -19,7 +19,7 @@ public class TrainerSummaryServiceImpl implements TrainerSummaryService {
     private final TrainerSummaryMapper trainerSummaryMapper;
 
     @Override
-    public void summary(TrainerSummaryDto trainerSummaryDto) {
+    public void updateSummary(TrainerSummaryDto trainerSummaryDto) {
         var actionType = trainerSummaryDto.getActionType();
         var existingTrainer = trainerSummaryRepo.getByUsername(trainerSummaryDto.getUsername());
         if (existingTrainer == null) {

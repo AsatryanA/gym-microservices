@@ -1,4 +1,4 @@
-package com.epam.gym.model.dto.request;
+package com.epam.gym.model.dto;
 
 import com.epam.gym.util.constants.ActionType;
 import lombok.Getter;

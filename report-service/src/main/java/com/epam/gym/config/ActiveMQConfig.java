@@ -1,5 +1,6 @@
 package com.epam.gym.config;
 
+import com.epam.gym.model.dto.TrainerSummaryDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -11,6 +12,8 @@ import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 
 import javax.jms.ConnectionFactory;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class ActiveMQConfig {
@@ -28,6 +31,9 @@ public MessageConverter converter() {
     converter.setObjectMapper(objectMapper());
     converter.setTargetType(MessageType.TEXT);
     converter.setTypeIdPropertyName("path");
+    Map<String,Class<?>> map = new HashMap<>();
+    map.put("TrainerSummaryDto", TrainerSummaryDto.class);
+    converter.setTypeIdMappings(map);
     return converter;
 }
     @Bean

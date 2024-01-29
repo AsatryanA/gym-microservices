@@ -18,5 +18,6 @@ public class TrainerSummaryDto implements Serializable {
     private Boolean isActive;
     private LocalDate date;
     private Integer duration;
+
     private ActionType actionType;
 }
