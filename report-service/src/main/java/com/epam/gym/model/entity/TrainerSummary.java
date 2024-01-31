@@ -1,8 +1,8 @@
 package com.epam.gym.model.entity;
 
-import com.epam.gym.util.constants.TrainerStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,6 +19,7 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 @Document(collection = "trainer_summary")
 @CompoundIndex(name = "firstname_lastname",def = "{'firstName': 1, 'lastName': 1}")
 public class TrainerSummary {
@@ -27,6 +28,6 @@ public class TrainerSummary {
     private String username;
     private String firstName;
     private String lastName;
-    private TrainerStatus status;
+    private Boolean status;
     private Map<Integer, Map<Integer, Integer>> duration;
 }

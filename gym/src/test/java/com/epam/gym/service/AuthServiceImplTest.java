@@ -1,19 +1,23 @@
-package com.epam.gym.service.impl;
+package com.epam.gym.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class TrainingTypeServiceImplTest {
+class AuthServiceImplTest {
 
     @BeforeEach
     void setUp() {
     }
 
     @Test
-    void getAll() {
+    void create() {
     }
 
     @Test
-    void getById() {
+    void login() {
+    }
+
+    @Test
+    void changeLogin() {
     }
 }

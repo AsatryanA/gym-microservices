@@ -1,8 +1,11 @@
-package com.epam.gym.service.impl;
+package com.epam.gym.service;
 
 import com.epam.gym.mapper.TraineeMapper;
 import com.epam.gym.mapper.TrainingMapper;
 import com.epam.gym.repository.TraineeRepository;
+import com.epam.gym.service.impl.AuthServiceImpl;
+import com.epam.gym.service.impl.TraineeServiceImpl;
+import com.epam.gym.service.impl.TrainerServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

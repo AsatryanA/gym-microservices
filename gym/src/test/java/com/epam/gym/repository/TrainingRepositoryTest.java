@@ -17,7 +17,7 @@ import java.time.LocalDate;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class TrainingRepositoryTest {
+class TrainingRepositoryTest {
 
     @Autowired
     TrainingRepository trainingRepository;

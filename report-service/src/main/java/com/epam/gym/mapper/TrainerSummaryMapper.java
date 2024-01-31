@@ -2,7 +2,6 @@ package com.epam.gym.mapper;
 
 import com.epam.gym.model.dto.TrainerSummaryDto;
 import com.epam.gym.model.entity.TrainerSummary;
-import com.epam.gym.util.constants.TrainerStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -23,7 +22,7 @@ public class TrainerSummaryMapper {
                 .lastName(trainerSummaryDto.getLastName())
                 .username(trainerSummaryDto.getUsername())
                 .duration(years)
-                .status(trainerSummaryDto.getIsActive() ? TrainerStatus.ACTIVE : TrainerStatus.INACTIVE)
+                .status(trainerSummaryDto.getIsActive())
                 .build();
     }
 
