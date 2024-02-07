@@ -18,6 +18,6 @@ public class TrainerResponseDTO {
     private String firstName;
     private String lastName;
     private TrainingType specialization;
-    private boolean isActive;
+    private Boolean isActive;
     private List<TrainerTraineeResponseDTO> trainees;
 }

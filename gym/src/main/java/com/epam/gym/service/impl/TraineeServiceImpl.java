@@ -31,7 +31,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class TraineeServiceImpl implements TraineeService {
-    private final TrainingRepository trainingRepository;
 
     private final UserService userService;
     private final TrainerService trainerService;

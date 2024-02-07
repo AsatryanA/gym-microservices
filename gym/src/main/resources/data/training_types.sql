@@ -5,3 +5,6 @@ VALUES (1, 'Cardio'),
        (4, 'Martial Arts'),
        (5, 'HIIT');
 
+
+
+

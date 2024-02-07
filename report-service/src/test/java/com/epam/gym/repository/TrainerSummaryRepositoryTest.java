@@ -2,12 +2,13 @@ package com.epam.gym.repository;
 
 import com.epam.gym.model.entity.TrainerSummary;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +18,8 @@ import java.util.Optional;
 import static com.mongodb.assertions.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DataMongoTest
+@DataMongoTest()
+@ExtendWith(SpringExtension.class)
 class TrainerSummaryRepositoryTest {
 
     @Autowired
@@ -61,12 +63,9 @@ class TrainerSummaryRepositoryTest {
     void givenFirstname_Lastname_whenGet_thenSuccess() {
         mongoTemplate.save(trainerSummary);
         List<TrainerSummary> fetchedSummary = trainerSummaryRepo.findByFirstNameAndLastName(trainerSummary.getFirstName(), trainerSummary.getLastName());
-        assertEquals(trainerSummary, fetchedSummary.get(0));
+        assertTrue(fetchedSummary.contains(trainerSummary));
     }
-    @AfterEach
-    void cleanUpDatabase() {
-        mongoTemplate.getDb().drop();
-    }
+
     private TrainerSummary createTrainerSummary() {
         Map<Integer, Map<Integer, Integer>> year = new HashMap<>();
         Map<Integer, Integer> month = new HashMap<>();

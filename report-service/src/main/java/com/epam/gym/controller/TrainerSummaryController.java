@@ -13,16 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/trainer-summary")
 @RequiredArgsConstructor
+@Valid
 public class TrainerSummaryController {
     private final TrainerSummaryService trainerSummaryService;
 
     @PostMapping
-    public void summary(@RequestBody TrainerSummaryDto trainerSummaryDto) {
+    public void summary(@RequestBody @Valid TrainerSummaryDto trainerSummaryDto) {
         trainerSummaryService.updateSummary(trainerSummaryDto);
     }
 

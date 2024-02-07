@@ -12,6 +12,7 @@ import com.epam.gym.util.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,7 @@ public class AuthServiceImpl implements AuthService {
         var userDetails = (UserDetailsImpl) authenticate.getPrincipal();
         var token = jwtProvider.generateAccessToken(userDetails.getId(), userDetails.getUsername());
         return LoginResponseDTO.builder()
+                .tokenType("Bearer ")
                 .token(token)
                 .build();
     }
@@ -49,6 +51,8 @@ public class AuthServiceImpl implements AuthService {
         if (passwordEncoder.matches(changeLoginDTO.getOldPassword(), user.getPassword())) {
             user.setPassword(passwordEncoder.encode(changeLoginDTO.getNewPassword()));
             userRepository.save(user);
+        }else {
+            throw new BadCredentialsException("Wrong old Password");
         }
     }
 

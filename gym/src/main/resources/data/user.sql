@@ -1,0 +1,16 @@
+INSERT INTO test.public.users(id, first_name, is_active, last_name, password, username)
+VALUES (1, 'Arsen', true, 'Asatryan', '$2a$12$MMDUF6xKXbioi6jrT4a/0eeJrN.B..UO2yG4t1XXxMqvhMDyPcTkq', 'Arsen.Asatryan'),
+       (2, 'Armen', true, 'Karapetyan', '$2a$12$MMDUF6xKXbioi6jrT4a/0eeJrN.B..UO2yG4t1XXxMqvhMDyPcTkq',
+        'Armen.Karapetyan'),
+       (3, 'Karen', true, 'Aghababyan', '$2a$12$MMDUF6xKXbioi6jrT4a/0eeJrN.B..UO2yG4t1XXxMqvhMDyPcTkq',
+        'Karen.Aghababyan'),
+       (4, 'Davit', true, 'Mantashyan', '$2a$12$MMDUF6xKXbioi6jrT4a/0eeJrN.B..UO2yG4t1XXxMqvhMDyPcTkq',
+        'Davit.Mantashyan'),
+       (5, 'Ani', true, 'Arustamyan', '$2a$12$MMDUF6xKXbioi6jrT4a/0eeJrN.B..UO2yG4t1XXxMqvhMDyPcTkq', 'Ani.Arustamyan'),
+       (6, 'Anush', true, 'Sargsyan', '$2a$12$MMDUF6xKXbioi6jrT4a/0eeJrN.B..UO2yG4t1XXxMqvhMDyPcTkq', 'Anush.Sargsyan'),
+       (7, 'Sargis', true, 'Adonc', '$2a$12$MMDUF6xKXbioi6jrT4a/0eeJrN.B..UO2yG4t1XXxMqvhMDyPcTkq', 'Sargis.Adonc'),
+       (8, 'Mihran', true, 'Alaverdyan', '$2a$12$MMDUF6xKXbioi6jrT4a/0eeJrN.B..UO2yG4t1XXxMqvhMDyPcTkq',
+        'Mihran.Alaverdyan'),
+       (9, 'Samvel', true, 'Minasyan', '$2a$12$MMDUF6xKXbioi6jrT4a/0eeJrN.B..UO2yG4t1XXxMqvhMDyPcTkq',
+        'Samvel.Minasyan'),
+       (10, 'Anna', true, 'Aslanyan', '$2a$12$MMDUF6xKXbioi6jrT4a/0eeJrN.B..UO2yG4t1XXxMqvhMDyPcTkq', 'Anna.Aslanyan');

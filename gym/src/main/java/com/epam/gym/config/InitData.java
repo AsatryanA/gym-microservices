@@ -21,12 +21,28 @@ public class InitData {
         try {
             var rowCount = jdbcTemplate.queryForObject(traineeCountQuery, Integer.class);
             if (rowCount != null && rowCount == 0) {
-                var resource = new ClassPathResource("import.sql");
-                var sqlScript = new String(Files.readAllBytes(resource.getFile().toPath()));
+                var trainingTypes = new ClassPathResource("data/training_types.sql");
+                var user = new ClassPathResource("data/user.sql");
+                var trainer = new ClassPathResource("data/trainer.sql");
+                var trainee = new ClassPathResource("data/trainee.sql");
+                var traineeTrainer = new ClassPathResource("data/trainee_trainer.sql");
+                var training = new ClassPathResource("data/training.sql");
+
+                var sqlScript = new String(Files.readAllBytes(trainingTypes.getFile().toPath()));
+                var sqlScript1 = new String(Files.readAllBytes(user.getFile().toPath()));
+                var sqlScript2 = new String(Files.readAllBytes(trainer.getFile().toPath()));
+                var sqlScript3 = new String(Files.readAllBytes(trainee.getFile().toPath()));
+                var sqlScript4 = new String(Files.readAllBytes(traineeTrainer.getFile().toPath()));
+                var sqlScript5 = new String(Files.readAllBytes(training.getFile().toPath()));
                 jdbcTemplate.execute(sqlScript);
+                jdbcTemplate.execute(sqlScript1);
+                jdbcTemplate.execute(sqlScript2);
+                jdbcTemplate.execute(sqlScript3);
+                jdbcTemplate.execute(sqlScript4);
+                jdbcTemplate.execute(sqlScript5);
             }
         } catch (IOException e) {
-            throw new RuntimeException("Error reading SQL script", e);
+            throw new RuntimeException(e);
         }
     }
 }

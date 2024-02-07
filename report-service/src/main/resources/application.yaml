@@ -10,6 +10,9 @@ spring:
       port: 27017
       database: gym
       auto-index-creation: true
+  mongodb:
+    embedded:
+      version: 5.0.0
 server:
   port: 0
 eureka:
@@ -24,10 +27,5 @@ jwt:
   expiration: 86400000
 
 logging:
-
-
-  level:
-    ROOT: INFO
-    you/package/path: INFO
   pattern:
     console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta}  [%X{transactionId} ] %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
