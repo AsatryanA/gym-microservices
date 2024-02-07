@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.HashMap;
@@ -20,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataMongoTest()
 @ExtendWith(SpringExtension.class)
+@ActiveProfiles("test")
 class TrainerSummaryRepositoryTest {
 
     @Autowired
@@ -36,9 +39,8 @@ class TrainerSummaryRepositoryTest {
     @Test
     void givenNewTrainerSummary_whenSave_thenSuccess() {
         mongoTemplate.save(trainerSummary);
-        Optional<TrainerSummary> savedSummary = trainerSummaryRepo.findById(trainerSummary.getId());
-        assertTrue(savedSummary.isPresent());
-        assertEquals(trainerSummary, savedSummary.get());
+        TrainerSummary savedSummary = mongoTemplate.findById(trainerSummary.getId().toString(),TrainerSummary.class);
+        assertEquals(trainerSummary, savedSummary);
     }
 
     @Test

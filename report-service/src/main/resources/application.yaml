@@ -1,18 +1,12 @@
 spring:
   application:
     name: report-service
+  profiles:
+    active: dev
   activemq:
     packages:
       trust-all: true
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: gym
-      auto-index-creation: true
-  mongodb:
-    embedded:
-      version: 5.0.0
+
 server:
   port: 0
 eureka:

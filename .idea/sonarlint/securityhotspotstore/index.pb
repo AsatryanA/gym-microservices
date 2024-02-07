@@ -190,3 +190,5 @@ h
 8gym/src/main/java/com/epam/gym/mapper/TrainerMapper.java,f\b\fbad2254b3b72163b04615b2af42647103dc34b0
 ^
 .gym/src/main/java/com/epam/gym/model/User.java,b\f\bfe26422fbc78f0e4850294c098d4c87417df7da
+n
+>report-service/src/test/java/com/epam/gym/TestMongoConfig.java,f\4\f4aa003376b9b075ca30ac25f9c0cc580503dfa0
